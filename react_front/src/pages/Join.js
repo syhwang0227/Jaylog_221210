@@ -1,10 +1,9 @@
 import JaylogImg from "assets/img/jaylog.png";
+import axios from "axios";
 import UserInfoLayout from "components/layouts/UserInfoLayout";
 import { useEffect, useRef } from "react";
 import { Button, Card, Col, Form, InputGroup, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-
-// import axios from "axios";
 
 const Join = () => {
   const refs = useRef({
@@ -33,7 +32,7 @@ const Join = () => {
       data: user,
     })
       .then((response) => {
-        if (response.status === 201) {
+        if (response.status === 201) {  // 데이터를 넣으면 201
           alert("회원가입이 완료되었습니다.");
 
           navigate("/login");

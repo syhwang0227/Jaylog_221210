@@ -1,3 +1,4 @@
+// 공통된 페이지
 import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap';
 
