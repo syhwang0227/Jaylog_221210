@@ -1,3 +1,4 @@
+
 from datetime import datetime
 
 from sqlalchemy import Column, DateTime, ForeignKey, Integer, String
@@ -16,9 +17,9 @@ class PostEntity(DBase):
     summary = Column(String)
     user_idx = Column(Integer, ForeignKey("User.idx"))
     create_date = Column(DateTime, default=datetime.now)
-    update_date = Column(DateTime, onupdate=datetime.now)
+    update_date = Column(DateTime)
     delete_date = Column(DateTime)
-    
-    userEntity = relationship("UserEntity", back_populates="postEntitys")
 
-    likeEntitys = relationship("LikeEntity", back_populates="postEntity")
+    user_entity = relationship("UserEntity", back_populates="post_entity_list")
+
+    like_entity_list = relationship("LikeEntity", back_populates="post_entity")

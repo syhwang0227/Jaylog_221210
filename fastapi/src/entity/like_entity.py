@@ -1,3 +1,4 @@
+
 from datetime import datetime
 
 from sqlalchemy import Column, DateTime, ForeignKey, Integer
@@ -10,12 +11,12 @@ class LikeEntity(DBase):
     __tablename__ = "Like"
 
     idx = Column(Integer, primary_key=True, index=True)
-    post_idx = Column(Integer, ForeignKey("Post.idx"))
     user_idx = Column(Integer, ForeignKey("User.idx"))
+    post_idx = Column(Integer, ForeignKey("Post.idx"))
     create_date = Column(DateTime, default=datetime.now)
-    update_date = Column(DateTime, onupdate=datetime.now)
+    update_date = Column(DateTime)
     delete_date = Column(DateTime)
 
-    userEntity = relationship("UserEntity")
+    user_entity = relationship("UserEntity")
 
-    postEntity = relationship("PostEntity", back_populates="likeEntitys")
+    post_entity = relationship("PostEntity", back_populates="like_entity_list")

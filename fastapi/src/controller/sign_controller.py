@@ -8,17 +8,16 @@ from fastapi import APIRouter, Depends
 from service import sign_service
 
 router = APIRouter(
-    prefix="/api/v1/sign",  # json으로 주고 받을 때는 api가 붙는다.
+    prefix="/api/v1/sign",
     tags=["sign"]
 )
 
-@router.post("/in")
-async def sign_in(reqDTO: sign_dto.ReqSignIn, db: Session = Depends(get_db)) -> JSONResponse:
-    return sign_service.sign_in(reqDTO, db) 
-
 
 @router.post("/up")
-async def sign_up(reqDTO: sign_dto.ReqSignUp, db: Session = Depends(get_db)) -> JSONResponse:
-    return sign_service.sign_up(reqDTO, db)  # sign_up 은 윗 줄과 맞춘다.
+async def sign_up(req_dto: sign_dto.ReqSignUp, db: Session = Depends(get_db)) -> JSONResponse:
+    return sign_service.sign_up(req_dto, db)
 
 
+@router.post("/in")
+async def sign_in(req_dto: sign_dto.ReqSignIn, db: Session = Depends(get_db)) -> JSONResponse:
+    return sign_service.sign_in(req_dto, db)

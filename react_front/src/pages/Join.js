@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { customAxios } from "util/CustomAxios";
 
 const Join = () => {
-
   // 사용 예시
   // const authStore = useAuthStore();
   // authStore.loginUser
@@ -32,13 +31,14 @@ const Join = () => {
     };
 
     customAxios
-    .publicAxios({
-      method: `post`,
-      url: `/api/v1/sign/up`,
-      data: user,
-    })
+      .publicAxios({
+        method: `post`,
+        url: `/api/v1/sign/up`,
+        data: user,
+      })
       .then((response) => {
-        if (response.status === 201) {  // 데이터를 넣으면 201
+        if (response.status === 201) {
+          // 데이터를 넣으면 201
           alert("회원가입이 완료되었습니다.");
 
           navigate("/login");
@@ -93,7 +93,7 @@ const Join = () => {
   }, []);
 
   return (
-    <UserInfoLayout isNavbar={true}>
+    <UserInfoLayout isNavbar={false}>
       <Card className="shadow-2-strong" style={{ borderRadius: "1rem" }}>
         <Card.Body className="p-5 text-center">
           <h3 className="mb-3">
