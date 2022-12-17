@@ -1,11 +1,16 @@
 import JaylogImg from "assets/img/jaylog.png";
-import axios from "axios";
 import UserInfoLayout from "components/layouts/UserInfoLayout";
 import { useEffect, useRef } from "react";
 import { Button, Card, Col, Form, InputGroup, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { customAxios } from "util/CustomAxios";
 
 const Join = () => {
+
+  // 사용 예시
+  // const authStore = useAuthStore();
+  // authStore.loginUser
+
   const refs = useRef({
     idElement: null,
     pwElement: null,
@@ -26,9 +31,10 @@ const Join = () => {
       simpleDesc: refs.current.simpleDescElement.value,
     };
 
-    axios({
+    customAxios
+    .publicAxios({
       method: `post`,
-      url: `http://localhost:8000/test`,
+      url: `/api/v1/sign/up`,
       data: user,
     })
       .then((response) => {
@@ -87,7 +93,7 @@ const Join = () => {
   }, []);
 
   return (
-    <UserInfoLayout isNavbar={false}>
+    <UserInfoLayout isNavbar={true}>
       <Card className="shadow-2-strong" style={{ borderRadius: "1rem" }}>
         <Card.Body className="p-5 text-center">
           <h3 className="mb-3">

@@ -1,7 +1,7 @@
 // 절대 경로 설정
 {
-    "compilerOptions": {
-      "baseUrl": "src"
-    },
-    "includes": ["src"]
+  "compilerOptions": {
+    "baseUrl": "src"
+  },
+  "includes": ["src"]
 }
