@@ -102,6 +102,10 @@ const Login = () => {
     setLoginPage();
   }, []);
 
+  useEffect(() => {
+    authStore.setLoginUser(null);
+  }, [authStore]);
+
   return (
     <UserInfoLayout isNavbar={true}>
       <Card className="shadow-2-strong" style={{ borderRadius: "1rem" }}>

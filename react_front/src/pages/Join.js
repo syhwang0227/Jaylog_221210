@@ -93,7 +93,7 @@ const Join = () => {
   }, []);
 
   return (
-    <UserInfoLayout isNavbar={false}>
+    <UserInfoLayout isNavbar={true}>
       <Card className="shadow-2-strong" style={{ borderRadius: "1rem" }}>
         <Card.Body className="p-5 text-center">
           <h3 className="mb-3">
