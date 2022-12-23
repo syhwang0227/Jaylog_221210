@@ -48,6 +48,7 @@ class CustomAxios {
             } else {
                 // refreshToken 유효
                 const { response, error } = await customAxios.publicAxios({
+                // const response = await customAxios.publicAxios({
                   method: `post`,
                   url: `/api/v1/sign/refresh`,
                   data: { refreshToken }
