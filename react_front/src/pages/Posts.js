@@ -14,22 +14,17 @@ const Posts = () => {
                 url: `/api/v1/posts`,
             })
             .then((response) => {
+                console.log(response);
                 if (response.status === 200) {
-                    if (rememberMeElement.checked) {
-                        localStorage.setItem("rememberId", JSON.stringify(idElement.value));
-                    } else {
-                        localStorage.removeItem("rememberId");
-                    }
-                    const content = response.data.content;
-                    localStorage.setItem("accessToken", content.accessToken);
-                    localStorage.setItem("refreshToken", content.refreshToken);
-                    authStore.setLoginUserByToken(content.accessToken);
-                    navigate("/");
+                    setPosts(response.data.content);
                 } else {
                     alert(response.data.message);
                 }
             })
             .catch((error) => {
+                // if
+                // 로그인 페이지로 이동
+                // 또는 refresh 해서 재통신
                 if (error?.response?.data?.detail != null) {
                     alert(JSON.stringify(error.response.data.detail));
                 } else if (error?.response?.data?.message != null) {
@@ -39,7 +34,7 @@ const Posts = () => {
                 }
             })
             .finally(() => {});
-    }, []);
+    };
 
     useEffect(() => {
         getPosts();

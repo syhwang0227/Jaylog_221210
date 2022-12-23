@@ -4,6 +4,20 @@ from pydantic import BaseModel
 from entity.user_entity import UserEntity
 from entity.post_entity import PostEntity
 
+
+class ReqInsertPost(BaseModel):
+    title : str
+    thumbnail: str | None = None
+    content : str
+    summary: str
+
+
+class ResInsertPost(BaseModel):
+    idx: int
+    
+    class Config:
+        orm_mode = True    
+
 class ResMainPost(BaseModel):
     
     # class 안의 클래스

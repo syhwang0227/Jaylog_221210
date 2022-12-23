@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 import { Card, Col, Image, InputGroup, Row } from 'react-bootstrap'
 import NoimageImg from "assets/img/no-image.png"
-import LikeImg from "assets/img/like.png"
+import LikeImg from "assets/img/like.svg"
 
 const MyCard = ({ post }) => {
     /** @type {React.CSSProperties} cardContainer */
